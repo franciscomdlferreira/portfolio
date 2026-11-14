@@ -1,0 +1,150 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { background: #fff; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #111;
+}
+
+a { display: block; color: inherit; }
+img { display: block; height: auto; }
+
+/* ---------- Home ---------- */
+.logo img {
+  width: min(440px, 80vw);
+  transition: filter .3s;
+}
+
+/* soft green glow around the drawing on hover */
+.logo:hover img,
+.logo:focus-visible img {
+  filter: drop-shadow(0 0 6px rgba(22, 176, 90, .45));
+}
+
+/* "projects" + "let's play", side by side */
+.links {
+  margin-top: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+.links .projects-link img { width: min(180px, 45vw); }
+.links .play-link img { height: 80px; width: auto; }
+
+.socials { margin-top: 40px; }
+
+/* ---------- Rows of icons ---------- */
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.row img { height: 48px; width: auto; }
+.row.big img { height: 96px; }
+.row.big img[src$="3fstudio.png"] { height: 70px; }
+
+/* tiny hand-drawn wiggle on hover */
+.row a:hover img,
+.links a:hover img { animation: wiggle .4s ease-in-out; }
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0); }
+  25%      { transform: rotate(-4deg); }
+  75%      { transform: rotate(4deg); }
+}
+
+/* ---------- Inner pages ---------- */
+.home {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+}
+.home img { width: 72px; }
+
+/* top-left nav on inner pages: FF (home) + "projects" */
+.crumbs {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.crumbs .home { position: static; }
+.crumbs .back img { width: 96px; }
+
+/* ---------- Project page ---------- */
+.project {
+  max-width: 52ch;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.6;
+}
+.project > img { height: 140px; width: auto; margin: 0 auto 40px; }
+.project p + p { margin-top: 12px; }
+.project .url {
+  display: inline-block;
+  margin-top: 32px;
+  color: #16b05a;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.about {
+  max-width: 50ch;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.6;
+}
+.about p + p { margin-top: 12px; }
+
+/* ---------- About: theorems floating in the margins ---------- */
+.about { position: relative; z-index: 1; }
+
+.th { position: fixed; pointer-events: none; }
+.th-gauss   { width: min(250px, 17vw); top: 14%;    right: 5vw;  transform: rotate(6deg); }
+.th-kampen  { width: min(220px, 15vw); bottom: 10%; left: 5vw;   transform: rotate(-5deg); }
+.th-brouwer { width: min(190px, 13vw); bottom: 7%;  right: 9vw;  transform: rotate(4deg); }
+
+/* not enough side margin: let them sit freely below the text instead */
+@media (max-width: 900px) {
+  .theorems {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    width: 100%;
+    max-width: 360px;
+    margin-top: 72px;
+  }
+  .th { position: static; }
+  /* page is taller than the screen here: start below the logo and let the logo scroll away */
+  .page-about { justify-content: flex-start; padding-top: 120px; padding-bottom: 64px; }
+  .page-about .home { position: absolute; }
+  .th-gauss   { width: 62%; align-self: flex-end; }
+  .th-kampen  { width: 54%; align-self: flex-start; }
+  .th-brouwer { width: 46%; align-self: flex-end; margin-right: 8%; }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 600px) {
+  .links { margin-top: 110px; gap: 48px; }
+  .row.big { gap: 22px; }
+  .row.big img { height: 78px; }
+  .row.big img[src$="3fstudio.png"] { height: 57px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
