@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gauss–Bonnet — Francisco Ferreira</title>
+  <link rel="icon" href="img/FF_logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-long">
+
+  <a class="home" href="index.html"><img src="img/FF_logo.png" alt="Home"></a>
+
+  <main class="theorem">
+    <img src="img/gauss-bonnet.png" alt="Gauss–Bonnet formula">
+    <h1>The Gauss–Bonnet theorem</h1>
+    <p class="sub">Bend a surface however you like: its total curvature only cares about how many holes it has.</p>
+
+    <p class="eq">∫<sub>M</sub> K dA = 2π χ(M)</p>
+
+    <h2>The left side: geometry</h2>
+    <p>
+      M is a closed surface: a sphere, a doughnut, a pretzel, anything without edges.
+      At every point it has a <em>Gaussian curvature</em> K. K is positive where the
+      surface bulges like a dome, negative where it curves like a saddle, and zero where
+      it is flat, or bent in only one direction like a cylinder.
+    </p>
+    <p>
+      The integral adds up the curvature over the whole surface: the
+      <em>total curvature</em>. To compute it you need to measure lengths and angles,
+      so it is pure geometry.
+    </p>
+
+    <h2>The right side: topology</h2>
+    <p>
+      χ(M) is the <em>Euler characteristic</em>. Draw a mesh of triangles on the surface
+      and count: χ = V − E + F (vertices − edges + faces). For a surface with g holes,
+      χ = 2 − 2g. You don't need any measurements, only counting. It's an integer, and
+      it doesn't change if you stretch or squash the surface.
+    </p>
+
+    <h2>Why it's remarkable</h2>
+    <p>
+      The theorem says these two things are always equal. Something you can only
+      compute with a ruler and a protractor turns out to depend only on the number of holes.
+    </p>
+    <ul>
+      <li><strong>Sphere of radius r:</strong> K = 1/r² everywhere and the area is 4πr², so the total is 4π. Since χ = 2, the right side is 2π·2 = 4π. ✓</li>
+      <li><strong>Squash the sphere into a potato:</strong> the curvature moves around, more at the bumps and less at the flat parts, but the total stays exactly 4π.</li>
+      <li><strong>Doughnut (torus):</strong> χ = 0, so the positive curvature on the outside exactly cancels the negative curvature on the inside.</li>
+    </ul>
+
+    <h2>A version you can walk</h2>
+    <p>
+      On a flat sheet, a triangle's angles add up to π (180°). On a curved surface they
+      don't, and the difference is exactly the curvature inside the triangle. Walk from
+      the North Pole down to the equator, turn 90°, walk a quarter of the way around the
+      Earth, turn 90° and walk back up. That triangle has three right angles (270°), and
+      the extra 90° is the curvature of the eighth of the globe you enclosed.
+    </p>
+
+    <a class="back" href="about.html">← back to about</a>
+  </main>
+
+</body>
+</html>

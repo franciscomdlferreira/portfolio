@@ -113,12 +113,14 @@ img { display: block; height: auto; }
 /* ---------- About: theorems floating in the margins ---------- */
 .about { position: relative; z-index: 1; }
 
-.th { position: fixed; pointer-events: none; }
+/* each theorem is a link to its explanation (no hover animation on purpose) */
+.th { position: fixed; z-index: 2; }
+.th img { width: 100%; }
 .th-gauss   { width: min(250px, 17vw); top: 14%;    right: 5vw;  transform: rotate(6deg); }
 .th-kampen  { width: min(220px, 15vw); bottom: 10%; left: 5vw;   transform: rotate(-5deg); }
 .th-brouwer { width: min(190px, 13vw); bottom: 7%;  right: 9vw;  transform: rotate(4deg); }
 
-/* not enough side margin: let them sit freely below the text instead */
+/* not enough side margin: one theorem above the text, two below */
 @media (max-width: 900px) {
   .theorems {
     display: flex;
@@ -126,8 +128,9 @@ img { display: block; height: auto; }
     gap: 36px;
     width: 100%;
     max-width: 360px;
-    margin-top: 72px;
   }
+  .theorems.top { margin-bottom: 56px; }
+  .theorems.bottom { margin-top: 64px; }
   .th { position: static; }
   /* page is taller than the screen here: start below the logo and let the logo scroll away */
   .page-about { justify-content: flex-start; padding-top: 120px; padding-bottom: 64px; }
@@ -135,6 +138,61 @@ img { display: block; height: auto; }
   .th-gauss   { width: 62%; align-self: flex-end; }
   .th-kampen  { width: 54%; align-self: flex-start; }
   .th-brouwer { width: 46%; align-self: flex-end; margin-right: 8%; }
+}
+
+/* ---------- Theorem pages ---------- */
+.page-long { justify-content: flex-start; padding-top: 120px; padding-bottom: 96px; }
+.page-long .home { position: absolute; }
+
+.theorem {
+  max-width: 62ch;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #222;
+}
+.theorem > img { width: min(340px, 80vw); margin: 0 auto 40px; }
+.theorem h1 {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.theorem .sub { text-align: center; color: #888; margin-bottom: 48px; }
+.theorem h2 {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #16b05a;
+  margin: 44px 0 10px;
+}
+.theorem p + p { margin-top: 14px; }
+.theorem ul { margin: 10px 0 0 20px; }
+.theorem li + li { margin-top: 6px; }
+.theorem .eq {
+  margin: 22px 0;
+  text-align: center;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 22px;
+  font-style: italic;
+  color: #111;
+}
+.theorem .eq sub, .theorem .eq sup { font-size: .6em; }
+.theorem .back {
+  display: inline-block;
+  margin-top: 56px;
+  font-size: 14px;
+  color: #888;
+  text-decoration: none;
+}
+.theorem .back:hover { color: #16b05a; }
+
+/* ---------- Home: glow when the name is tapped (touch screens) ---------- */
+.logo.tapped img { animation: tapglow .45s ease-out forwards; }
+@keyframes tapglow {
+  0%   { filter: drop-shadow(0 0 0 rgba(22, 176, 90, 0)); }
+  60%  { filter: drop-shadow(0 0 10px rgba(22, 176, 90, .6)); }
+  100% { filter: drop-shadow(0 0 6px rgba(22, 176, 90, .45)); }
 }
 
 /* ---------- Phones ---------- */
@@ -148,3 +206,5 @@ img { display: block; height: auto; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+.theorem a.inline { color: #16b05a; text-decoration: none; border-bottom: 1px solid currentColor; }

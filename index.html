@@ -22,5 +22,21 @@
     <a href="https://x.com/1of1francisco" target="_blank" rel="noopener"><img src="img/X.png" alt="X"></a>
   </nav>
 
+  <script>
+    // on touch screens there's no hover, so flash the glow before going to About
+    (function () {
+      var logo = document.querySelector(".logo");
+      var touch = window.matchMedia("(hover: none)").matches;
+      var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!logo || !touch || still) return;
+      logo.addEventListener("click", function (e) {
+        e.preventDefault();
+        logo.classList.add("tapped");
+        setTimeout(function () { window.location.href = logo.href; }, 450);
+      });
+      // coming back with the browser's back button: remove the glow
+      window.addEventListener("pageshow", function () { logo.classList.remove("tapped"); });
+    })();
+  </script>
 </body>
 </html>

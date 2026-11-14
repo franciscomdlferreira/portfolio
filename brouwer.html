@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brouwer fixed-point theorem — Francisco Ferreira</title>
+  <link rel="icon" href="img/FF_logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-long">
+
+  <a class="home" href="index.html"><img src="img/FF_logo.png" alt="Home"></a>
+
+  <main class="theorem">
+    <img src="img/brouwer.png" alt="Brouwer fixed-point theorem drawing">
+    <h1>The Brouwer fixed-point theorem</h1>
+    <p class="sub">However you continuously move a disc onto itself, some point stays put.</p>
+
+    <h2>The statement</h2>
+    <p>
+      Let D be a closed disc (a filled circle, or a solid ball in any dimension) and let
+      f : D → D be any <em>continuous</em> function, meaning one that doesn't tear anything.
+      Then there is at least one point x with
+    </p>
+    <p class="eq">f(x) = x</p>
+    <p>That point is called a <em>fixed point</em>.</p>
+
+    <h2>Everyday versions</h2>
+    <ul>
+      <li>Crumple a map of Lisbon and drop it on a table in Lisbon. At least one point on the map is exactly above the real place it represents.</li>
+      <li>Gently stir a cup of coffee. In an idealised version, where the liquid moves continuously and stays in the cup, at every moment some point of the coffee is exactly where it started.</li>
+    </ul>
+
+    <h2>The proof in the drawing</h2>
+    <p>
+      Suppose f has <em>no</em> fixed point, so f(x) ≠ x for every x. Then for each x you
+      can draw the ray that starts at f(x) and passes through x, and follow it until it
+      hits the edge of the disc. Call that point g(x).
+    </p>
+    <p>
+      This g moves smoothly as x moves, and points already on the edge stay where they
+      are. So g continuously squashes the whole disc onto its boundary circle without
+      moving the circle.
+    </p>
+    <p>
+      That's impossible. Take the loop that goes once around the edge. Inside the disc it
+      can be shrunk to a point, and applying g to that shrinking would shrink it inside
+      the circle. But on a circle, a loop that winds once around can never be shrunk,
+      because π₁(circle) = ℤ (the same fundamental group that appears in
+      <a class="inline" href="van-kampen.html">Van Kampen</a>). Contradiction, so a
+      fixed point must exist.
+    </p>
+
+    <h2>Why economists care</h2>
+    <p>
+      The theorem says a solution <em>exists</em> without telling you where it is. John
+      Nash used exactly this kind of argument to prove that every finite game has an
+      equilibrium, and Arrow and Debreu used fixed-point theorems to show that an economy
+      can have prices where supply meets demand in every market.
+    </p>
+
+    <a class="back" href="about.html">← back to about</a>
+  </main>
+
+</body>
+</html>
